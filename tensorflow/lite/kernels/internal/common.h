@@ -39,7 +39,7 @@ limitations under the License.
 #pragma GCC diagnostic ignored "-Wnarrowing"
 #pragma GCC diagnostic ignored "-Wsequence-point"
 
-#include "NEON_2_SSE.h"
+//#include "NEON_2_SSE.h"
 
 #pragma GCC diagnostic pop
 #endif
