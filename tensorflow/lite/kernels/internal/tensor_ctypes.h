@@ -40,7 +40,7 @@ inline int16_t* GetTensorData(TfLiteTensor* tensor) {
 
 template <>
 inline int32_t* GetTensorData(TfLiteTensor* tensor) {
-  return tensor != nullptr ? tensor->data.i32 : nullptr;
+  return tensor != nullptr ? (int32_t *)tensor->data.i32 : nullptr;
 }
 
 template <>
@@ -83,7 +83,7 @@ inline const int16_t* GetTensorData(const TfLiteTensor* tensor) {
 
 template <>
 inline const int32_t* GetTensorData(const TfLiteTensor* tensor) {
-  return tensor != nullptr ? tensor->data.i32 : nullptr;
+  return tensor != nullptr ? (int32_t *)tensor->data.i32 : nullptr;
 }
 
 template <>
@@ -103,7 +103,7 @@ inline RuntimeShape GetTensorShape(const TfLiteTensor* tensor) {
 
   TfLiteIntArray* dims = tensor->dims;
   const int dims_size = dims->size;
-  const int32_t* dims_data = dims->data;
+  const int32_t* dims_data = (int32_t *)dims->data;
   return RuntimeShape(dims_size, dims_data);
 }
 
