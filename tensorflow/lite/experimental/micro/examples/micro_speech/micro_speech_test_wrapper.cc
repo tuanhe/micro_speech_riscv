@@ -37,6 +37,7 @@ limitations under the License.
     micro_test::tests_failed = 0;              \
     tflite::MicroErrorReporter error_reporter; \
     micro_test::reporter = &error_reporter;
+    printf("Entering the %s()...\n",__FUNCTION__);  
 
 
 TF_LITE_MICRO_TEST(TestInvoke) {
@@ -115,6 +116,11 @@ TF_LITE_MICRO_TEST(TestInvoke) {
   TF_LITE_MICRO_EXPECT_GT(yes_score, unknown_score);
   TF_LITE_MICRO_EXPECT_GT(yes_score, no_score);
 
+  printf("silence score : %d  \n",silence_score);  
+  printf("unkown score  : %d  \n",unknown_score);  
+  printf("yes score     : %d  \n",yes_score);  
+  printf("no score      : %d  \n",no_score);  
+
   // Now test with a different input, from a recording of "No".
   const uint8_t* no_features_data = g_no_f9643d42_nohash_4_data;
   for (int i = 0; i < input->bytes; ++i) {
@@ -145,15 +151,24 @@ TF_LITE_MICRO_TEST(TestInvoke) {
   TF_LITE_MICRO_EXPECT_GT(no_score, unknown_score);
   TF_LITE_MICRO_EXPECT_GT(no_score, yes_score);
 
-  error_reporter->Report("Ran successfully\n");
+  printf("************ No part *************\n"); 
+  printf("silence score : %d  \n",silence_score);  
+  printf("unkown score  : %d  \n",unknown_score);  
+  printf("yes score     : %d  \n",yes_score);  
+  printf("no score      : %d  \n",no_score);  
+
+  printf("Run successfully\n");
 }
 
   micro_test::reporter->Report(                                \
       "%d/%d tests passed", micro_test::tests_passed,          \
       (micro_test::tests_failed + micro_test::tests_passed));  \
-  if (micro_test::tests_failed == 0) {                         \
-    micro_test::reporter->Report("~~~ALL TESTS PASSED~~~\n");  \
-  } else {                                                     \
-    micro_test::reporter->Report("~~~SOME TESTS FAILED~~~\n"); \
-  }                                                            \
+  if (micro_test::tests_failed == 0) {                         
+    printf("~~~ALL TESTS PASSED~~~\n");  
+  } else {                                                     
+    printf("~~~SOME TESTS FAILED~~~\n"); 
+  }
+  
+  return 0 ;
+  
   }

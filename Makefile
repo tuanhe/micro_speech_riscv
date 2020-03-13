@@ -30,7 +30,7 @@ INCLUDES := \
 -I./third_party/flatbuffers/include
 
 CXXFLAGS += -O3 -DNDEBUG --std=c++11 -g -DTF_LITE_STATIC_MEMORY  -march=rv32imac -mabi=ilp32 -mcmodel=medlow 
-
+CCFLAGS += -march=rv32imac -mabi=ilp32 -mcmodel=medlow 
 LDFLAGS += -lm
 
 %.o: %.cc
