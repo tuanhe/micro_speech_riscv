@@ -5,6 +5,15 @@ use the
 ```
   make
 ```
-then it will build the static lib 
+it will build the static lib
+next 
+```
+gcc -c micro_speech_lib_test.c -o lib_test.o
+```
+to build the test code 
+then link the static lib 
+```
+g++ -o lib_test lib_test.o -L. libmicro_speech.a
+```
 
 
